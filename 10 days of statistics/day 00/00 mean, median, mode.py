@@ -2,15 +2,33 @@
 n = int(input())
 ar = sorted(list(map(int, input().strip().split(' '))))
 
-def descripstats(n, ar):
+def mean(ar):
+    # get vector length
+    n = len(ar)
+
     # mean
     mean = sum(ar)/n
 
-    # median
+    return mean
+
+def median(ar):
+    # get vector length
+    n = len(ar)
+    
     if n % 2 == 0:
-        median = (ar[int(n/2) - 1] + ar[int(n/2)])/2
+        ind1 = int(n/2) - 1
+        ind2 = int(n/2)
+        median = (ar[ind1] + ar[ind2])/2
+        pos = list([ind1, ind2])
     else:
-        median = ar[int((n - 1)/2)]
+        ind = int((n - 1)/2)
+        median = ar[ind]
+        pos = list([ind])
+        
+    return median, pos
+
+def mode(ar):
+    n = len(ar)
 
     # mode
     modeArr = [1]
@@ -25,10 +43,12 @@ def descripstats(n, ar):
 
     mode = ar[modeArr.index(max(modeArr))]
     
-    print(mean)
-    print(median)
-    print(mode)
-    
-    return
+    return mode
 
-descripstats(n, ar)
+valMean = mean(ar)
+valMedian, _ = median(ar)
+valMode = mode(ar)
+
+print(valMean)
+print(valMedian)
+print(valMode)
