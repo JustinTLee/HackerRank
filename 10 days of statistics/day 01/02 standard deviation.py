@@ -19,6 +19,7 @@ def std(n, X):
     for k in range(n):
         sqError += (X[k] - meanX) ** 2
         
+    # calculate variance and standard deviation
     var = sqError/n
     std = var ** 0.5
     
